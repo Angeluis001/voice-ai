@@ -1,0 +1,17 @@
+.env
+.env.sip
+.env.sip.stack
+.agents/
+.codex/
+.planning/
+.git.onedrive-placeholder/
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.mypy_cache/
+logs/
+artifacts/
+dist/
+build/
+docker/sip-stack/drachtio-app/node_modules/

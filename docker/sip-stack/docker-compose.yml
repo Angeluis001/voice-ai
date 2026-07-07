@@ -1,0 +1,110 @@
+services:
+  freeswitch:
+    image: ${FREESWITCH_IMAGE}
+    container_name: ${STACK_NAME}-freeswitch
+    restart: unless-stopped
+    ports:
+      - "${HOST_FREESWITCH_ESL_PORT}:8021"
+      - "${HOST_FREESWITCH_SIP_PORT}:5080/tcp"
+      - "${HOST_FREESWITCH_SIP_PORT}:5080/udp"
+      - "${HOST_FREESWITCH_DEVICE_SIP_PORT}:${FREESWITCH_DEVICE_SIP_PORT}/tcp"
+      - "${HOST_FREESWITCH_DEVICE_SIP_PORT}:${FREESWITCH_DEVICE_SIP_PORT}/udp"
+      - "${HOST_FREESWITCH_RTP_START}-${HOST_FREESWITCH_RTP_END}:${FREESWITCH_RTP_START}-${FREESWITCH_RTP_END}/udp"
+    command: >
+      freeswitch
+      --event-socket-port 8021
+      --password ${FREESWITCH_ESL_PASSWORD}
+      --sip-port 5080
+      --rtp-range-start ${FREESWITCH_RTP_START}
+      --rtp-range-end ${FREESWITCH_RTP_END}
+    environment:
+      FREESWITCH_ESL_PASSWORD: ${FREESWITCH_ESL_PASSWORD}
+      FREESWITCH_EXTERNAL_IP: ${FREESWITCH_EXTERNAL_IP}
+      FREESWITCH_DIRECTORY_DOMAIN: ${FREESWITCH_DIRECTORY_DOMAIN}
+      FREESWITCH_DEVICE_SIP_PORT: ${FREESWITCH_DEVICE_SIP_PORT}
+      MICROSIP_EXTENSION: ${MICROSIP_EXTENSION}
+      MICROSIP_EXTENSION_PASSWORD: ${MICROSIP_EXTENSION_PASSWORD}
+      TELAIR_AUTH_ID: ${TELAIR_AUTH_ID}
+      TELAIR_AUTH_PASSWORD: ${TELAIR_AUTH_PASSWORD}
+      TELAIR_SIP_DOMAIN: ${TELAIR_SIP_DOMAIN}
+    volumes:
+      - ./freeswitch/conf:/etc/freeswitch
+      - ./freeswitch/conf/freeswitch.xml:/usr/local/freeswitch/conf/freeswitch.xml:ro
+      - ./freeswitch/conf/vars.xml:/usr/local/freeswitch/conf/vars.xml:ro
+      - ./freeswitch/conf/dialplan/mrf.xml:/usr/local/freeswitch/conf/dialplan/mrf.xml:ro
+      - ./freeswitch/conf/dialplan/default.xml:/usr/local/freeswitch/conf/dialplan/default.xml:ro
+      - ./freeswitch/conf/directory/default.xml:/usr/local/freeswitch/conf/directory/default.xml:ro
+      - ./freeswitch/conf/directory/default/1000.xml:/usr/local/freeswitch/conf/directory/default/1000.xml:ro
+      - ./freeswitch/conf/sip_profiles/mrf.xml:/usr/local/freeswitch/conf/sip_profiles/mrf.xml:ro
+      - ./freeswitch/conf/sip_profiles/local_device.xml:/usr/local/freeswitch/conf/sip_profiles/local_device.xml:ro
+    networks:
+      - sipnet
+
+  drachtio-server:
+    image: ${DRACHTIO_SERVER_IMAGE}
+    container_name: ${STACK_NAME}-drachtio-server
+    restart: unless-stopped
+    depends_on:
+      - freeswitch
+    ports:
+      - "${HOST_DRACHTIO_ADMIN_PORT}:9022"
+    command: >
+      sh -lc "sed 's|__DRACHTIO_SECRET__|'\"$$DRACHTIO_SECRET\"'|g' /etc/drachtio.conf.xml.tmpl > /tmp/drachtio.conf.xml &&
+      drachtio -f /tmp/drachtio.conf.xml
+      --contact '${DRACHTIO_PUBLIC_CONTACT}'
+      --port ${HOST_DRACHTIO_ADMIN_PORT}
+      --loglevel ${DRACHTIO_LOGLEVEL}
+      --sofia-loglevel ${DRACHTIO_SOFIA_LOGLEVEL}"
+    environment:
+      DRACHTIO_SECRET: ${DRACHTIO_SECRET}
+      DRACHTIO_ADMIN_TCP_PORT: ${HOST_DRACHTIO_ADMIN_PORT}
+      DRACHTIO_LOGLEVEL: ${DRACHTIO_LOGLEVEL}
+      DRACHTIO_SOFIA_LOGLEVEL: ${DRACHTIO_SOFIA_LOGLEVEL}
+    volumes:
+      - ./drachtio/drachtio.conf.xml.tmpl:/etc/drachtio.conf.xml.tmpl:ro
+    networks:
+      - sipnet
+
+  drachtio-app:
+    image: ${NODE_IMAGE}
+    container_name: ${STACK_NAME}-drachtio-app
+    restart: unless-stopped
+    depends_on:
+      - drachtio-server
+      - freeswitch
+    working_dir: /app
+    environment:
+      DRACHTIO_HOST: drachtio-server
+      DRACHTIO_PORT: ${HOST_DRACHTIO_ADMIN_PORT}
+      DRACHTIO_SECRET: ${DRACHTIO_SECRET}
+      B2B_TARGET_URI: ${B2B_TARGET_URI}
+      FREESWITCH_HOST: freeswitch
+      FREESWITCH_PORT: 8021
+      FREESWITCH_SECRET: ${FREESWITCH_ESL_PASSWORD}
+      VOICE_APP_WEBHOOK_SECRET: ${VOICE_APP_WEBHOOK_SECRET}
+      PORT: ${VOICE_APP_PORT}
+    command: >
+      sh -lc "npm install && node app.js"
+    volumes:
+      - ./drachtio-app:/app
+    networks:
+      - sipnet
+
+  kamailio:
+    image: ${KAMAILIO_IMAGE}
+    container_name: ${STACK_NAME}-kamailio
+    restart: unless-stopped
+    depends_on:
+      - drachtio-server
+    ports:
+      - "${HOST_SIP_PORT}:5060/udp"
+      - "${HOST_SIP_PORT}:5060/tcp"
+    volumes:
+      - ./kamailio/kamailio.cfg:/etc/kamailio/kamailio.cfg:ro
+    networks:
+      - sipnet
+
+networks:
+  sipnet:
+    name: ${STACK_NAME}-net
+    driver: bridge

@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<include>
+  <profile name="local_device">
+    <domains>
+      <domain name="192.168.1.12" alias="true" parse="false"/>
+      <domain name="all" alias="true" parse="false"/>
+    </domains>
+    <settings>
+      <param name="challenge-realm" value="192.168.1.12"/>
+      <param name="sip-trace" value="yes"/>
+      <param name="rfc2833-pt" value="101"/>
+      <param name="dtmf-type" value="rfc2833"/>
+      <param name="inbound-late-negotiation" value="true"/>
+      <param name="rtp-ip" value="$${local_ip_v4}"/>
+      <param name="sip-ip" value="$${local_ip_v4}"/>
+      <param name="sip-port" value="5062"/>
+      <param name="ext-rtp-ip" value="$${external_rtp_ip}"/>
+      <param name="ext-sip-ip" value="$${external_sip_ip}"/>
+      <param name="auth-calls" value="true"/>
+      <param name="apply-nat-acl" value="nat.auto"/>
+      <param name="context" value="default"/>
+      <param name="inbound-reg-force-matching-username" value="true"/>
+      <param name="manage-presence" value="true"/>
+      <param name="nonce-ttl" value="86400"/>
+      <param name="user-agent-string" value="Voice AI device registrar"/>
+      <param name="codec-prefs" value="PCMU,PCMA,G722,OPUS"/>
+      <param name="outbound-codec-prefs" value="PCMU,PCMA,G722,OPUS"/>
+      <param name="inbound-codec-negotiation" value="greedy"/>
+      <param name="tls" value="false"/>
+      <param name="tls-only" value="false"/>
+    </settings>
+    <gateways>
+      <gateway name="telair">
+        <!-- Telair is currently returning 503 OUTGOING_CALL_BARRED on REGISTER.
+             Keep the carrier identity here, but run this MVP as direct inbound SIP to Kamailio. -->
+        <param name="username" value="$${telair_auth_id}"/>
+        <param name="password" value="$${telair_auth_password}"/>
+        <param name="proxy" value="$${telair_sip_domain}"/>
+        <param name="from-user" value="$${telair_auth_id}"/>
+        <param name="from-domain" value="$${telair_sip_domain}"/>
+        <param name="extension" value="$${telair_auth_id}"/>
+        <param name="caller-id-in-from" value="false"/>
+        <param name="register" value="false"/>
+        <param name="expire-seconds" value="300"/>
+        <param name="retry-seconds" value="30"/>
+        <param name="context" value="public"/>
+      </gateway>
+    </gateways>
+  </profile>
+</include>

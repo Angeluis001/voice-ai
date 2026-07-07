@@ -1,0 +1,40 @@
+<include>
+  <context name="default">
+    <extension name="telair-outbound-au-onsn">
+      <condition field="destination_number" expression="^(0[2-9]\d{7,9})$">
+        <action application="set" data="effective_caller_id_name=New Era IT"/>
+        <action application="set" data="effective_caller_id_number=0734952900"/>
+        <action application="bridge" data="sofia/gateway/telair/$1"/>
+      </condition>
+    </extension>
+
+    <extension name="telair-outbound-au-e164">
+      <condition field="destination_number" expression="^\+61(\d{9})$">
+        <action application="set" data="effective_caller_id_name=New Era IT"/>
+        <action application="set" data="effective_caller_id_number=0734952900"/>
+        <action application="bridge" data="sofia/gateway/telair/0$1"/>
+      </condition>
+    </extension>
+
+    <extension name="telair-outbound-au-61">
+      <condition field="destination_number" expression="^61(\d{9})$">
+        <action application="set" data="effective_caller_id_name=New Era IT"/>
+        <action application="set" data="effective_caller_id_number=0734952900"/>
+        <action application="bridge" data="sofia/gateway/telair/0$1"/>
+      </condition>
+    </extension>
+
+    <extension name="local-microsip-device">
+      <condition field="destination_number" expression="^1000$">
+        <action application="bridge" data="sofia/local_device/1000%192.168.1.12"/>
+      </condition>
+    </extension>
+
+    <extension name="telair-did-to-microsip">
+      <condition field="destination_number" expression="^(0734952900|734952900|61734952900|\+61734952900|76618|TA23647)$">
+        <action application="set" data="ringback=$${hold_music}"/>
+        <action application="bridge" data="sofia/local_device/1000%192.168.1.12"/>
+      </condition>
+    </extension>
+  </context>
+</include>

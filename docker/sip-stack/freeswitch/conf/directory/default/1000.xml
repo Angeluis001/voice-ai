@@ -1,0 +1,18 @@
+<include>
+  <user id="1000">
+    <params>
+      <param name="password" value="9a7b1d54ceeb4d1f"/>
+      <param name="vm-password" value="1000"/>
+    </params>
+    <variables>
+      <variable name="toll_allow" value="domestic,international,local"/>
+      <variable name="accountcode" value="1000"/>
+      <variable name="user_context" value="default"/>
+      <variable name="effective_caller_id_name" value="Voice AI Device"/>
+      <variable name="effective_caller_id_number" value="1000"/>
+      <variable name="outbound_caller_id_name" value="New Era IT"/>
+      <variable name="outbound_caller_id_number" value="0734952900"/>
+      <variable name="callgroup" value="voiceai"/>
+    </variables>
+  </user>
+</include>

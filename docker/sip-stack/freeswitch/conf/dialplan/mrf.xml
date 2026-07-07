@@ -1,0 +1,30 @@
+<include>
+  <context name="mrf">
+    <extension name="telair-did-to-microsip">
+      <condition field="destination_number" expression="^(0734952900|734952900|61734952900|\+61734952900|76618|TA23647)$">
+        <action application="set" data="ringback=$${hold_music}"/>
+        <action application="bridge" data="sofia/local_device/1000%192.168.1.12"/>
+      </condition>
+    </extension>
+
+  <extension name="echo-test">
+    <condition field="destination_number" expression="^9196$">
+      <action application="answer"/>
+      <action application="sleep" data="500"/>
+      <action application="playback" data="tone_stream://%(1500,0,440,480)"/>
+      <action application="echo"/>
+    </condition>
+  </extension>
+
+    <extension name="socket">
+      <condition field="${sip_user_agent}" expression="^drachtio-fsmrf:(.*)$">
+        <action application="answer"/>
+        <action application="set" data="send_silence_when_idle=-1"/>
+        <action application="set" data="hangup_after_bridge=false"/>
+        <action application="set" data="park_after_bridge=true"/>
+        <action application="set" data="playback_terminators=none"/>
+        <action application="socket" data="${sip_h_X-esl-outbound} async full"/>
+      </condition>
+    </extension>
+  </context>
+</include>

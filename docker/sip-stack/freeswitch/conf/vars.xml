@@ -1,0 +1,15 @@
+<include>
+  <X-PRE-PROCESS cmd="set" data="domain=192.168.1.12"/>
+  <X-PRE-PROCESS cmd="set" data="domain_name=$${domain}"/>
+  <X-PRE-PROCESS cmd="set" data="hold_music=local_stream://moh"/>
+  <X-PRE-PROCESS cmd="set" data="default_password=8b740645a90b482182d8bc4f44a96a5f"/>
+  <X-PRE-PROCESS cmd="set" data="bind_server_ip=0.0.0.0"/>
+  <X-PRE-PROCESS cmd="set" data="external_rtp_ip=177.225.218.201"/>
+  <X-PRE-PROCESS cmd="set" data="external_sip_ip=177.225.218.201"/>
+  <X-PRE-PROCESS cmd="set" data="device_sip_port=5062"/>
+  <X-PRE-PROCESS cmd="set" data="microsip_extension=1000"/>
+  <X-PRE-PROCESS cmd="set" data="microsip_extension_password=9a7b1d54ceeb4d1f"/>
+  <X-PRE-PROCESS cmd="set" data="telair_auth_id=76618"/>
+  <X-PRE-PROCESS cmd="set" data="telair_auth_password=NHXfTwTl3TEe"/>
+  <X-PRE-PROCESS cmd="set" data="telair_sip_domain=sip.telair.net.au"/>
+</include>

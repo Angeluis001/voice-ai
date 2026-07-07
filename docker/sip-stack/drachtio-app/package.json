@@ -1,0 +1,10 @@
+{
+  "name": "voice-ai-drachtio-app",
+  "version": "0.1.0",
+  "private": true,
+  "main": "app.js",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "drachtio-srf": "^5.0.0"
+  }
+}
