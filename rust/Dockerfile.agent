@@ -1,0 +1,21 @@
+# Linux build of the Rust voice agent for the SIP stack (replaces the Node realtime bridge).
+# Build context: the repository root.
+FROM rust:1-slim-bookworm AS build
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends pkg-config libssl-dev libasound2-dev \
+    && rm -rf /var/lib/apt/lists/*
+WORKDIR /build
+# The repo's .cargo/config.toml points the target dir at a Windows path; override it here.
+ENV CARGO_TARGET_DIR=/build/target
+COPY Cargo.toml Cargo.lock ./
+COPY crates ./crates
+RUN cargo build --release -p voice-agent
+
+FROM debian:bookworm-slim
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends ca-certificates libssl3 libasound2 \
+    && rm -rf /var/lib/apt/lists/*
+COPY --from=build /build/target/release/voice-agent /usr/local/bin/voice-agent
+WORKDIR /srv
+EXPOSE 3100
+CMD ["voice-agent", "serve"]

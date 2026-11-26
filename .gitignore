@@ -1,6 +1,7 @@
 .env
 .env.sip
 .env.sip.stack
+.env.sip.azure
 .agents/
 .codex/
 .planning/
@@ -15,3 +16,10 @@ artifacts/
 dist/
 build/
 docker/sip-stack/drachtio-app/node_modules/
+docker/sip-stack/runtime/pilot/
+
+# Rust
+target/
+
+# Local softphone overlay (generated; contains passwords)
+docker/sip-stack/freeswitch/conf/vars.local.xml

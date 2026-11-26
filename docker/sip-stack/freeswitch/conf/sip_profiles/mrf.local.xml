@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<include>
+  <profile name="drachtio_mrf">
+    <domains>
+      <!-- Do NOT alias domain "all" — it steals voiceai.local from local_device
+           and breaks softphone dialplan/registration ownership. -->
+      <domain name="all" alias="false" parse="false"/>
+    </domains>
+    <settings>
+      <!-- sip-trace on for Change #1 diagnosis (Session-Expires / UPDATE). -->
+      <param name="sip-trace" value="yes"/>
+      <param name="rfc2833-pt" value="101"/>
+      <param name="dtmf-type" value="rfc2833"/>
+      <param name="inbound-late-negotiation" value="true"/>
+      <param name="rtp-ip" value="$${local_ip_v4}"/>
+      <param name="sip-ip" value="$${local_ip_v4}"/>
+      <param name="sip-port" value="5080"/>
+      <param name="ext-rtp-ip" value="$${external_rtp_ip}"/>
+      <param name="ext-sip-ip" value="$${external_sip_ip}"/>
+      <param name="auth-calls" value="false"/>
+      <!-- Session timers OFF: SE was 300 (not 32s). Require:timer on 200 OK
+           may also confuse some SBCs about ACK. -->
+      <param name="enable-timer" value="false"/>
+      <param name="user-agent-string" value="Voice AI media gateway"/>
+      <param name="username" value="Voice-AI-Mediaserver"/>
+      <param name="apply-nat-acl" value="nat.auto"/>
+      <param name="aggressive-nat-detection" value="true"/>
+      <param name="NDLB-force-rport" value="true"/>
+      <param name="NDLB-received-in-nat-reg-contact" value="true"/>
+      <param name="sip-force-contact" value="NDLB-connectile-dysfunction-2.0"/>
+      <!-- CHANGE #3 did not help: still BYE Reason ACK Timeout at ~32s.
+           timer-T1X64 is kept elevated but root fix is Contact/transport (Change #4). -->
+      <param name="timer-T1" value="500"/>
+      <param name="timer-T1X64" value="180000"/>
+      <!-- Advertise public SIP port separately from bind port (mod_sofia supports this).
+           Keep 5080 for now; Change #4 uses TCP REGISTER so ACK rides a real connection. -->
+      <param name="ext-sip-port" value="5080"/>
+      <param name="context" value="mrf"/>
+      <param name="rtp-timer-name" value="soft"/>
+      <param name="rtcp-audio-interval-msec" value="5000"/>
+      <param name="codec-prefs" value="PCMU,PCMA,G722,OPUS"/>
+      <param name="outbound-codec-prefs" value="PCMU,PCMA,G722,OPUS"/>
+      <param name="inbound-codec-negotiation" value="greedy"/>
+      <param name="inbound-reg-force-matching-username" value="false"/>
+      <param name="nonce-ttl" value="86400"/>
+      <param name="manage-presence" value="false"/>
+      <param name="enable-3pcc" value="true"/>
+      <param name="tls" value="false"/>
+      <param name="tls-only" value="false"/>
+      <param name="tls-bind-params" value="transport=tls"/>
+      <param name="tls-sip-port" value="5061"/>
+      <param name="tls-passphrase" value=""/>
+      <param name="tls-verify-date" value="true"/>
+      <param name="tls-verify-policy" value="none"/>
+      <param name="tls-verify-depth" value="2"/>
+      <param name="tls-verify-in-subjects" value=""/>
+      <param name="tls-version" value="$${sip_tls_version}"/>
+      <param name="tls-ciphers" value="$${sip_tls_ciphers}"/>
+    </settings>
+    <!-- Local softphone testing: no carrier gateway, so this PC never registers the Telair trunk. -->
+  </profile>
+</include>

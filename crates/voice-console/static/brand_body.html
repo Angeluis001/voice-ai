@@ -1,0 +1,132 @@
+
+    <div id="brand-banner" class="banner" role="status"></div>
+    <p class="statusline">Write a branded announcement, pick a stock voice or clone from a sample, then generate WAV audio you can preview and download. Playing it on a live DID is a later step.</p>
+    <div class="brand-layout">
+      <section class="panel">
+        <div class="eyebrow">Composer</div>
+        <div class="field">
+          <label for="client-select">Client pack</label>
+          <select id="client-select"></select>
+        </div>
+        <div class="field">
+          <div class="lbl">Message type</div>
+          <div class="kind-row">
+            <button type="button" class="kind-btn active" data-kind="closed">Closed period</button>
+            <button type="button" class="kind-btn" data-kind="after_hours">After hours</button>
+            <button type="button" class="kind-btn" data-kind="holiday">Holiday</button>
+            <button type="button" class="kind-btn" data-kind="greeting">Greeting</button>
+            <button type="button" class="kind-btn" data-kind="custom">Custom</button>
+          </div>
+        </div>
+        <div class="field">
+          <label for="title">Title</label>
+          <input id="title" type="text" placeholder="Christmas close 2026" />
+        </div>
+        <div id="dates-row" class="dates-row field">
+          <div class="field">
+            <label for="starts-on">Closed from</label>
+            <input id="starts-on" type="date" />
+          </div>
+          <div class="field">
+            <label for="ends-on">Closed until</label>
+            <input id="ends-on" type="date" />
+          </div>
+        </div>
+        <div class="field">
+          <label for="script">Spoken script</label>
+          <textarea id="script" maxlength="15000" placeholder="Thank you for calling…"></textarea>
+        </div>
+        <div class="dates-row field">
+          <div class="field">
+            <label for="speed">Talking speed</label>
+            <div class="speed-control">
+              <input id="speed" type="range" min="0.7" max="1.5" step="0.05" value="1" />
+              <div class="speed-meta">
+                <span>Slow</span>
+                <strong id="speed-value">1.00×</strong>
+                <span>Fast</span>
+              </div>
+            </div>
+          </div>
+          <div class="field">
+            <label for="accent">Accent / language</label>
+            <select id="accent">
+              {{ACCENT_OPTIONS}}
+            </select>
+          </div>
+        </div>
+        <p class="hint">Speed is 0.70 (slower) to 1.50 (faster). UK / Australia / US keep English and change the accent on the same voice.</p>
+        <div class="action-row">
+          <button type="button" class="secondary" id="fill-btn">Fill template</button>
+          <button type="button" class="btn-primary" id="generate-btn">Generate, save &amp; preview</button>
+        </div>
+        <div id="preview-wrap" class="preview-box" style="display:none;margin-top:16px">
+          <div class="eyebrow">Preview</div>
+          <audio id="preview-audio" controls></audio>
+          <a class="btn btn-primary" id="preview-download" href="#" download>Download WAV</a>
+        </div>
+      </section>
+      <section class="panel">
+        <div class="eyebrow">Voice</div>
+        <p class="hint">Use a stock voice, or clone from a short sample (about 30–120 seconds, one speaker, quiet room).</p>
+        <div class="section-label" style="margin-top:0">Stock</div>
+        <div id="stock-voices" class="voice-list"></div>
+        <div class="section-label">Cloned</div>
+        <div id="cloned-voices" class="voice-list"></div>
+        <div class="clone-box">
+          <div class="eyebrow">Clone from sample</div>
+          <form id="clone-form">
+            <div class="field">
+              <label for="clone-name">Voice name</label>
+              <input id="clone-name" type="text" placeholder="Front desk — Sarah" />
+            </div>
+            <div class="field">
+              <label for="clone-file">Sample audio</label>
+              <input id="clone-file" type="file" accept=".wav,.mp3,.m4a,.flac,.ogg,.aac,audio/*" />
+            </div>
+            <div class="dates-row" style="margin-bottom:12px">
+              <div class="field">
+                <label for="clone-gender">Gender (optional)</label>
+                <select id="clone-gender">
+                  <option value="">—</option>
+                  <option value="female">Female</option>
+                  <option value="male">Male</option>
+                  <option value="neutral">Neutral</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="clone-tone">Tone (optional)</label>
+                <select id="clone-tone">
+                  <option value="">—</option>
+                  <option value="professional">Professional</option>
+                  <option value="warm">Warm</option>
+                  <option value="calm">Calm</option>
+                  <option value="friendly">Friendly</option>
+                </select>
+              </div>
+            </div>
+            <button type="submit" class="btn-primary" id="clone-btn">Clone from sample</button>
+          </form>
+          <p class="hint" style="margin-top:12px">If API clone is gated, create the voice in the xAI library and paste the Voice ID below.</p>
+          <form id="import-form">
+            <div class="field">
+              <label for="import-id">Existing Voice ID</label>
+              <input id="import-id" type="text" placeholder="nlbqfwie" autocomplete="off" />
+            </div>
+            <div class="field">
+              <label for="import-name">Label (optional)</label>
+              <input id="import-name" type="text" placeholder="Company owner" />
+            </div>
+            <button type="submit" class="secondary">Register Voice ID</button>
+          </form>
+        </div>
+      </section>
+    </div>
+    <div class="section-label">Library</div>
+    <div class="panel table-wrap">
+      <table class="data library-table">
+        <thead><tr><th>Message</th><th>Period</th><th>Audio</th></tr></thead>
+        <tbody id="library-body"></tbody>
+      </table>
+    </div>
+    
