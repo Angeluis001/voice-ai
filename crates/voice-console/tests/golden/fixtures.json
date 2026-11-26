@@ -1,0 +1,965 @@
+{
+ "sessions": [
+  {
+   "session_id": "sess-active-enquiry-0001",
+   "call_id": "call-1",
+   "source": "telephony",
+   "started_at": "2026-07-08T01:02:03.000000+00:00",
+   "updated_at": "2026-07-08T01:05:09.123456+00:00",
+   "is_active": true,
+   "status": "active",
+   "latest_intent": "new_enquiry",
+   "latest_transcript": "I've got an <unpaid> invoice & it's \"overdue\"",
+   "latest_response": "Thanks — what's the approximate amount owed?",
+   "latest_action": null,
+   "target_number": "9198",
+   "prompt_profile": "sop_enquiries_realtime",
+   "slots": {
+    "debt_type": "commercial invoice",
+    "amount": null,
+    "staff_name": "unknown",
+    "reference": "INV-<7>"
+   },
+   "latest_latency_ms": 640,
+   "latest_phase": "transcribed",
+   "turn_count": 2,
+   "turns": [
+    {
+     "source": "telephony",
+     "request_id": "req-0",
+     "timestamp": "2026-07-08T01:02:03.000000+00:00",
+     "transcript": "",
+     "intent": "opening_greeting",
+     "response": "Welcome to the enquiries line.",
+     "language": "",
+     "duration_seconds": 0.0,
+     "provider": "",
+     "status": "",
+     "phase": "",
+     "call_id": null,
+     "session_id": null,
+     "turn": 0,
+     "input_audio_path": null,
+     "output_audio_path": null,
+     "raw_result_path": null,
+     "observed_at": null,
+     "target_number": null,
+     "prompt_profile": null,
+     "action": null,
+     "slots": null,
+     "timings_ms": null
+    },
+    {
+     "source": "telephony",
+     "request_id": "req-1",
+     "timestamp": "2026-07-08T01:02:03.000000+00:00",
+     "transcript": "I've got an <unpaid> invoice",
+     "intent": "new_enquiry",
+     "response": "Thanks — what's the amount?",
+     "language": "",
+     "duration_seconds": 0.0,
+     "provider": "",
+     "status": "",
+     "phase": "",
+     "call_id": null,
+     "session_id": null,
+     "turn": 1,
+     "input_audio_path": null,
+     "output_audio_path": null,
+     "raw_result_path": null,
+     "observed_at": null,
+     "target_number": null,
+     "prompt_profile": null,
+     "action": null,
+     "slots": null,
+     "timings_ms": null
+    }
+   ],
+   "post_analysis": null,
+   "has_post_analysis": false,
+   "recording_path": "",
+   "channel_uuid": "",
+   "has_recording": false,
+   "handoff_brief": "",
+   "content": null,
+   "mode": "realtime",
+   "roleplay_scenario": "",
+   "roleplay_label": ""
+  },
+  {
+   "session_id": "sess-transferred-0002-with-a-long-identifier",
+   "call_id": null,
+   "source": "telephony",
+   "started_at": "2026-07-08T01:02:03.000000+00:00",
+   "updated_at": "2026-07-08T01:05:09.123456+00:00",
+   "is_active": false,
+   "status": "transferred",
+   "latest_intent": "transfer_request",
+   "latest_transcript": "Can I talk to a person please",
+   "latest_response": "Connecting you now.",
+   "latest_action": "transfer",
+   "target_number": "9198",
+   "prompt_profile": "sop_enquiries",
+   "slots": {
+    "debt_type": "cleaning invoice",
+    "amount": 6000,
+    "action": "transfer"
+   },
+   "latest_latency_ms": null,
+   "latest_phase": "completed",
+   "turn_count": 4,
+   "turns": [
+    {
+     "source": "telephony",
+     "request_id": "req-0",
+     "timestamp": "2026-07-08T01:02:03.000000+00:00",
+     "transcript": "",
+     "intent": "",
+     "response": "Hello, enquiries.",
+     "language": "",
+     "duration_seconds": 0.0,
+     "provider": "",
+     "status": "",
+     "phase": "",
+     "call_id": null,
+     "session_id": null,
+     "turn": 0,
+     "input_audio_path": null,
+     "output_audio_path": null,
+     "raw_result_path": null,
+     "observed_at": null,
+     "target_number": null,
+     "prompt_profile": null,
+     "action": null,
+     "slots": null,
+     "timings_ms": null
+    },
+    {
+     "source": "telephony",
+     "request_id": "req-1",
+     "timestamp": "2026-07-08T01:02:03.000000+00:00",
+     "transcript": "Someone owes me money",
+     "intent": "new_enquiry",
+     "response": "What type of debt is it?",
+     "language": "",
+     "duration_seconds": 0.0,
+     "provider": "",
+     "status": "",
+     "phase": "",
+     "call_id": null,
+     "session_id": null,
+     "turn": 1,
+     "input_audio_path": null,
+     "output_audio_path": null,
+     "raw_result_path": null,
+     "observed_at": null,
+     "target_number": null,
+     "prompt_profile": null,
+     "action": null,
+     "slots": null,
+     "timings_ms": null
+    },
+    {
+     "source": "telephony",
+     "request_id": "req-2",
+     "timestamp": "2026-07-08T01:02:03.000000+00:00",
+     "transcript": "A cleaning invoice, six grand",
+     "intent": "",
+     "response": "Got it.",
+     "language": "",
+     "duration_seconds": 0.0,
+     "provider": "",
+     "status": "",
+     "phase": "",
+     "call_id": null,
+     "session_id": null,
+     "turn": 2,
+     "input_audio_path": null,
+     "output_audio_path": null,
+     "raw_result_path": null,
+     "observed_at": null,
+     "target_number": null,
+     "prompt_profile": null,
+     "action": null,
+     "slots": null,
+     "timings_ms": null
+    },
+    {
+     "source": "telephony",
+     "request_id": "req-3",
+     "timestamp": "2026-07-08T01:02:03.000000+00:00",
+     "transcript": "",
+     "intent": "",
+     "response": "",
+     "language": "",
+     "duration_seconds": 0.0,
+     "provider": "",
+     "status": "",
+     "phase": "",
+     "call_id": null,
+     "session_id": null,
+     "turn": 3,
+     "input_audio_path": null,
+     "output_audio_path": null,
+     "raw_result_path": null,
+     "observed_at": null,
+     "target_number": null,
+     "prompt_profile": null,
+     "action": null,
+     "slots": null,
+     "timings_ms": null
+    },
+    {
+     "source": "telephony",
+     "request_id": "req-x",
+     "timestamp": "2026-07-08T01:02:03.000000+00:00",
+     "transcript": "Can I talk to a person",
+     "intent": "transfer_request",
+     "response": "Connecting you <now>.",
+     "language": "",
+     "duration_seconds": 0.0,
+     "provider": "",
+     "status": "",
+     "phase": "",
+     "call_id": null,
+     "session_id": null,
+     "turn": null,
+     "input_audio_path": null,
+     "output_audio_path": null,
+     "raw_result_path": null,
+     "observed_at": null,
+     "target_number": null,
+     "prompt_profile": null,
+     "action": null,
+     "slots": null,
+     "timings_ms": null
+    }
+   ],
+   "post_analysis": {
+    "status": "ready",
+    "primary_intent": "new_debt_enquiry",
+    "summary": "Caller has a $6,000 unpaid cleaning invoice & wants a person.",
+    "outcome": "transferred_to_staff",
+    "caller_goal": "Recover an unpaid 'commercial' invoice",
+    "key_facts": {
+     "amount": "$6,000",
+     "debtor_name": "Acme <Pty>",
+     "disputed": false,
+     "age_days": 45,
+     "ratio": 0.5,
+     "notes": null,
+     "email": "unknown",
+     "tags": [
+      "a",
+      "b"
+     ]
+    },
+    "recovered_slots": {
+     "debt_type": "cleaning invoice",
+     "amount": 6000,
+     "staff_name": "",
+     "reference": "null"
+    },
+    "turn_intents": [
+     "new_enquiry",
+     "transfer_request"
+    ],
+    "risks": [
+     "caller_impatient",
+     "amount_unverified"
+    ],
+    "action_items": [
+     {
+      "owner": "staff",
+      "task": "Call back & confirm <amount>",
+      "due": "tomorrow 12pm"
+     },
+     {
+      "owner": "system",
+      "task": "Send LOD template",
+      "due": null
+     }
+    ],
+    "next_best_action": "call_back_today",
+    "stakeholders": [
+     {
+      "role": "caller",
+      "name": "Dana",
+      "notes": ""
+     }
+    ],
+    "follow_up_email_draft": "Hi Dana,\n\nThanks for calling — \"next steps\" below.\n",
+    "internal_handoff_brief": "analysis brief (unused when session brief set)",
+    "product_feedback": [],
+    "roleplay_scorecard": null,
+    "generated_at": "2026-07-08T01:05:09.123456+00:00",
+    "error": ""
+   },
+   "has_post_analysis": true,
+   "recording_path": "/rec/2.wav",
+   "channel_uuid": "",
+   "has_recording": true,
+   "handoff_brief": "  Caller: Dana & Co <dana@example.test>\nOwed: $6,000 'cleaning'  ",
+   "content": {
+    "status": "ready",
+    "artifacts": [
+     {
+      "key": "email",
+      "title": "Follow-up <email>",
+      "body": "Hi Dana & team,\nIt's sorted.",
+      "content_type": "email"
+     },
+     {
+      "key": "sms",
+      "title": "SMS",
+      "body": "We'll call you back.",
+      "content_type": "sms"
+     },
+     {
+      "key": "checklist",
+      "title": "Checklist",
+      "body": "Checklist line with <tags> & \"quotes\" — é.\nChecklist line with <tags> & \"quotes\" — é.\nChecklist line with <tags> & \"quotes\" — é.\nChecklist line with <tags> & \"quotes\" — é.\nChecklist line with <tags> & \"quotes\" — é.\nChecklist line with <tags> & \"quotes\" — é.\nChecklist line with <tags> & \"quotes\" — é.\nChecklist line with <tags> & \"quotes\" — é.\nChecklist line with <tags> & \"quotes\" — é.\nChecklist line with <tags> & \"quotes\" — é.\nChecklist line with <tags> & \"quotes\" — é.\nChecklist line with <tags> & \"quotes\" — é.\nChecklist line with <tags> & \"quotes\" — é.\nChecklist line with <tags> & \"quotes\" — é.\nChecklist line with <tags> & \"quotes\" — é.\nChecklist line with <tags> & \"quotes\" — é.\nChecklist line with <tags> & \"quotes\" — é.\nChecklist line with <tags> & \"quotes\" — é.\nChecklist line with <tags> & \"quotes\" — é.\nChecklist line with <tags> & \"quotes\" — é.\nChecklist line with <tags> & \"quotes\" — é.\nChecklist line with <tags> & \"quotes\" — é.\nChecklist line with <tags> & \"quotes\" — é.\nChecklist line with <tags> & \"quotes\" — é.\nChecklist line with <tags> & \"quotes\" — é.\nChecklist line with <tags> & \"quotes\" — é.\nChecklist line with <tags> & \"quotes\" — é.\nChecklist line with <tags> & \"quotes\" — é.\nChecklist line with <tags> & \"quotes\" — é.\nChecklist line with <tags> & \"quotes\" — é.\nChecklist line with <tags> & \"quotes\" — é.\nChecklist line with <tags> & \"quotes\" — é.\nChecklist line with <tags> & \"quotes\" — é.\nChecklist line with <tags> & \"quotes\" — é.\nChecklist line with <tags> & \"quotes\" — é.\nChecklist line with <tags> & \"quotes\" — é.\nChecklist line with <tags> & \"quotes\" — é.\nChecklist line with <tags> & \"quotes\" — é.\nChecklist line with <tags> & \"quotes\" — é.\nChecklist line with <tags> & \"quotes\" — é.\n",
+      "content_type": "checklist"
+     },
+     {
+      "key": "handoff",
+      "title": "Handoff",
+      "body": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+      "content_type": "text"
+     },
+     {
+      "key": "extra",
+      "title": "Fifth (hidden on Create)",
+      "body": "five",
+      "content_type": "text"
+     }
+    ],
+    "generated_at": "2026-07-08T01:05:09.123456+00:00"
+   },
+   "mode": "realtime",
+   "roleplay_scenario": "",
+   "roleplay_label": ""
+  },
+  {
+   "session_id": "sess-roleplay-0003",
+   "call_id": null,
+   "source": "telephony",
+   "started_at": "2026-07-08T01:02:03.000000+00:00",
+   "updated_at": "2026-07-08T01:05:09.123456+00:00",
+   "is_active": false,
+   "status": "completed",
+   "latest_intent": "roleplay_turn",
+   "latest_transcript": "Thanks for your time",
+   "latest_response": "Okay, bye.",
+   "latest_action": null,
+   "target_number": "9199",
+   "prompt_profile": "roleplay",
+   "slots": {},
+   "latest_latency_ms": null,
+   "latest_phase": "completed",
+   "turn_count": 3,
+   "turns": [
+    {
+     "source": "telephony",
+     "request_id": "req-0",
+     "timestamp": "2026-07-08T01:02:03.000000+00:00",
+     "transcript": "",
+     "intent": "roleplay_customer_opening",
+     "response": "Hello? Who's this?",
+     "language": "",
+     "duration_seconds": 0.0,
+     "provider": "",
+     "status": "",
+     "phase": "",
+     "call_id": null,
+     "session_id": null,
+     "turn": 0,
+     "input_audio_path": null,
+     "output_audio_path": null,
+     "raw_result_path": null,
+     "observed_at": null,
+     "target_number": null,
+     "prompt_profile": null,
+     "action": null,
+     "slots": null,
+     "timings_ms": null
+    },
+    {
+     "source": "telephony",
+     "request_id": "req-1",
+     "timestamp": "2026-07-08T01:02:03.000000+00:00",
+     "transcript": "Hi, it's Sam from recoveries",
+     "intent": "roleplay_turn",
+     "response": "Oh. What's this about?",
+     "language": "",
+     "duration_seconds": 0.0,
+     "provider": "",
+     "status": "",
+     "phase": "",
+     "call_id": null,
+     "session_id": null,
+     "turn": 1,
+     "input_audio_path": null,
+     "output_audio_path": null,
+     "raw_result_path": null,
+     "observed_at": null,
+     "target_number": null,
+     "prompt_profile": null,
+     "action": null,
+     "slots": null,
+     "timings_ms": null
+    },
+    {
+     "source": "telephony",
+     "request_id": "req-2",
+     "timestamp": "2026-07-08T01:02:03.000000+00:00",
+     "transcript": "Your account is overdue",
+     "intent": "",
+     "response": "",
+     "language": "",
+     "duration_seconds": 0.0,
+     "provider": "",
+     "status": "",
+     "phase": "",
+     "call_id": null,
+     "session_id": null,
+     "turn": 2,
+     "input_audio_path": null,
+     "output_audio_path": null,
+     "raw_result_path": null,
+     "observed_at": null,
+     "target_number": null,
+     "prompt_profile": null,
+     "action": null,
+     "slots": null,
+     "timings_ms": null
+    }
+   ],
+   "post_analysis": {
+    "status": "ready",
+    "primary_intent": "roleplay_practice",
+    "summary": "Practice call.",
+    "outcome": "completed",
+    "caller_goal": "",
+    "key_facts": {},
+    "recovered_slots": {},
+    "turn_intents": [],
+    "risks": [],
+    "action_items": [],
+    "next_best_action": "",
+    "stakeholders": [],
+    "follow_up_email_draft": "",
+    "internal_handoff_brief": "",
+    "product_feedback": [],
+    "roleplay_scorecard": {
+     "scenario": "promise",
+     "scenario_label": "Promise to pay",
+     "overall_score": 82,
+     "grade": "B",
+     "greeting": 9,
+     "empathy": 7,
+     "discovery": 12,
+     "accuracy": -1,
+     "control": 8,
+     "strengths": [
+      "Clear greeting",
+      "Used the caller's name"
+     ],
+     "improvements": [
+      "Confirm <amount> & date"
+     ],
+     "coach_notes": "Good control; confirm the promise date."
+    },
+    "generated_at": "",
+    "error": ""
+   },
+   "has_post_analysis": true,
+   "recording_path": "",
+   "channel_uuid": "",
+   "has_recording": true,
+   "handoff_brief": "",
+   "content": null,
+   "mode": "roleplay",
+   "roleplay_scenario": "promise",
+   "roleplay_label": "Promise to pay — Sochelkara"
+  },
+  {
+   "session_id": "sess-roleplay-pending-0004",
+   "call_id": null,
+   "source": "telephony",
+   "started_at": "2026-07-08T01:02:03.000000+00:00",
+   "updated_at": "",
+   "is_active": true,
+   "status": "active",
+   "latest_intent": "",
+   "latest_transcript": "",
+   "latest_response": "",
+   "latest_action": null,
+   "target_number": "9199gate",
+   "prompt_profile": "Roleplay",
+   "slots": {},
+   "latest_latency_ms": null,
+   "latest_phase": "processing",
+   "turn_count": 1,
+   "turns": [],
+   "post_analysis": null,
+   "has_post_analysis": false,
+   "recording_path": "",
+   "channel_uuid": "",
+   "has_recording": false,
+   "handoff_brief": "",
+   "content": null,
+   "mode": "realtime",
+   "roleplay_scenario": "gate",
+   "roleplay_label": ""
+  },
+  {
+   "session_id": "sess-callback-0005",
+   "call_id": null,
+   "source": "telephony",
+   "started_at": "",
+   "updated_at": "",
+   "is_active": false,
+   "status": "callback_requested",
+   "latest_intent": "callback_request",
+   "latest_transcript": "",
+   "latest_response": "",
+   "latest_action": "callback",
+   "target_number": "9197",
+   "prompt_profile": null,
+   "slots": {},
+   "latest_latency_ms": null,
+   "latest_phase": "",
+   "turn_count": 2,
+   "turns": [],
+   "post_analysis": null,
+   "has_post_analysis": true,
+   "recording_path": "",
+   "channel_uuid": "",
+   "has_recording": false,
+   "handoff_brief": "",
+   "content": null,
+   "mode": "realtime",
+   "roleplay_scenario": "",
+   "roleplay_label": ""
+  },
+  {
+   "session_id": "sess-unsupported-0006",
+   "call_id": null,
+   "source": "telephony",
+   "started_at": "",
+   "updated_at": "",
+   "is_active": false,
+   "status": "completed",
+   "latest_intent": "unsupported_debt",
+   "latest_transcript": "",
+   "latest_response": "",
+   "latest_action": "decline_debt_type",
+   "target_number": "2900",
+   "prompt_profile": null,
+   "slots": {
+    "debt_type": "residential rent",
+    "amount": "unknown"
+   },
+   "latest_latency_ms": null,
+   "latest_phase": "",
+   "turn_count": 5,
+   "turns": [],
+   "post_analysis": {
+    "status": "failed",
+    "primary_intent": "",
+    "summary": "",
+    "outcome": "",
+    "caller_goal": "",
+    "key_facts": {},
+    "recovered_slots": {},
+    "turn_intents": [],
+    "risks": [],
+    "action_items": [],
+    "next_best_action": "",
+    "stakeholders": [],
+    "follow_up_email_draft": "",
+    "internal_handoff_brief": "",
+    "product_feedback": [],
+    "roleplay_scorecard": {
+     "scenario": "",
+     "scenario_label": "",
+     "overall_score": 0,
+     "grade": "",
+     "greeting": 0,
+     "empathy": 0,
+     "discovery": 0,
+     "accuracy": 0,
+     "control": 0,
+     "strengths": [],
+     "improvements": [],
+     "coach_notes": ""
+    },
+    "generated_at": "",
+    "error": "model <timeout>"
+   },
+   "has_post_analysis": false,
+   "recording_path": "",
+   "channel_uuid": "",
+   "has_recording": false,
+   "handoff_brief": "",
+   "content": {
+    "status": "ready",
+    "artifacts": [],
+    "generated_at": ""
+   },
+   "mode": "realtime",
+   "roleplay_scenario": "",
+   "roleplay_label": ""
+  },
+  {
+   "session_id": "sess-fees-0007",
+   "call_id": null,
+   "source": "telephony",
+   "started_at": "",
+   "updated_at": "",
+   "is_active": false,
+   "status": "failed",
+   "latest_intent": "Fees_Question",
+   "latest_transcript": "",
+   "latest_response": "",
+   "latest_action": null,
+   "target_number": "9197",
+   "prompt_profile": "pilot",
+   "slots": {},
+   "latest_latency_ms": null,
+   "latest_phase": "failed",
+   "turn_count": 1,
+   "turns": [],
+   "post_analysis": null,
+   "has_post_analysis": false,
+   "recording_path": "",
+   "channel_uuid": "",
+   "has_recording": false,
+   "handoff_brief": "",
+   "content": null,
+   "mode": "realtime",
+   "roleplay_scenario": "",
+   "roleplay_label": ""
+  },
+  {
+   "session_id": "sess-intake-0008",
+   "call_id": null,
+   "source": "telephony",
+   "started_at": "",
+   "updated_at": "",
+   "is_active": true,
+   "status": "active",
+   "latest_intent": "new_enquiry",
+   "latest_transcript": "",
+   "latest_response": "",
+   "latest_action": null,
+   "target_number": null,
+   "prompt_profile": null,
+   "slots": {
+    "debt_type": "trade debt",
+    "amount": 1250.5,
+    "staff_name": "Alex"
+   },
+   "latest_latency_ms": null,
+   "latest_phase": "some_custom_phase 2nd",
+   "turn_count": 3,
+   "turns": [],
+   "post_analysis": null,
+   "has_post_analysis": false,
+   "recording_path": "",
+   "channel_uuid": "",
+   "has_recording": false,
+   "handoff_brief": "",
+   "content": null,
+   "mode": "realtime",
+   "roleplay_scenario": "",
+   "roleplay_label": ""
+  },
+  {
+   "session_id": "sess-standby-0009",
+   "call_id": null,
+   "source": "telephony",
+   "started_at": "",
+   "updated_at": "",
+   "is_active": false,
+   "status": "",
+   "latest_intent": "",
+   "latest_transcript": "word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word ",
+   "latest_response": "",
+   "latest_action": null,
+   "target_number": "9199",
+   "prompt_profile": "sop_enquiries",
+   "slots": {},
+   "latest_latency_ms": null,
+   "latest_phase": "",
+   "turn_count": 0,
+   "turns": [],
+   "post_analysis": null,
+   "has_post_analysis": false,
+   "recording_path": "",
+   "channel_uuid": "",
+   "has_recording": false,
+   "handoff_brief": "",
+   "content": null,
+   "mode": "realtime",
+   "roleplay_scenario": "",
+   "roleplay_label": ""
+  },
+  {
+   "session_id": "sess-live-0010",
+   "call_id": null,
+   "source": "telephony",
+   "started_at": "",
+   "updated_at": "",
+   "is_active": true,
+   "status": "active",
+   "latest_intent": "",
+   "latest_transcript": "",
+   "latest_response": "",
+   "latest_action": null,
+   "target_number": "2900",
+   "prompt_profile": null,
+   "slots": {
+    "amount": 300,
+    "action": "continue"
+   },
+   "latest_latency_ms": null,
+   "latest_phase": "reasoned",
+   "turn_count": 1,
+   "turns": [],
+   "post_analysis": null,
+   "has_post_analysis": false,
+   "recording_path": "",
+   "channel_uuid": "",
+   "has_recording": false,
+   "handoff_brief": "",
+   "content": null,
+   "mode": "realtime",
+   "roleplay_scenario": "",
+   "roleplay_label": ""
+  },
+  {
+   "session_id": "sess-debt-only-0011",
+   "call_id": null,
+   "source": "telephony",
+   "started_at": "",
+   "updated_at": "",
+   "is_active": false,
+   "status": "recent",
+   "latest_intent": "",
+   "latest_transcript": "",
+   "latest_response": "",
+   "latest_action": null,
+   "target_number": "9198",
+   "prompt_profile": null,
+   "slots": {
+    "debt_type": "loan",
+    "amount": 0
+   },
+   "latest_latency_ms": null,
+   "latest_phase": "",
+   "turn_count": 7,
+   "turns": [],
+   "post_analysis": null,
+   "has_post_analysis": false,
+   "recording_path": "",
+   "channel_uuid": "",
+   "has_recording": false,
+   "handoff_brief": "",
+   "content": null,
+   "mode": "roleplay",
+   "roleplay_scenario": "",
+   "roleplay_label": ""
+  },
+  {
+   "session_id": "sess-missing-amount-0012",
+   "call_id": null,
+   "source": "telephony",
+   "started_at": "",
+   "updated_at": "",
+   "is_active": false,
+   "status": "Completed ",
+   "latest_intent": "",
+   "latest_transcript": "",
+   "latest_response": "",
+   "latest_action": null,
+   "target_number": "9198",
+   "prompt_profile": null,
+   "slots": {
+    "debt_type": "loan",
+    "amount": ""
+   },
+   "latest_latency_ms": null,
+   "latest_phase": " Queued",
+   "turn_count": 2,
+   "turns": [],
+   "post_analysis": null,
+   "has_post_analysis": false,
+   "recording_path": "",
+   "channel_uuid": "",
+   "has_recording": true,
+   "handoff_brief": "",
+   "content": null,
+   "mode": "realtime",
+   "roleplay_scenario": "",
+   "roleplay_label": ""
+  }
+ ],
+ "pack": {
+  "id": "sbr",
+  "roleplay": {
+   "default_scenario": "paid",
+   "scenarios": {
+    "paid": {
+     "label": "Already paid — Brett",
+     "blurb": "Brett <Anthony> · $100 paid",
+     "track": "collections"
+    },
+    "gate": {
+     "label": "",
+     "opening": "Hello, who's calling?",
+     "track": "collections"
+    },
+    "fees": {
+     "blurb": "Fees & commission questions"
+    },
+    "bad": "not a dict"
+   },
+   "tree": {
+    "title": "Collections call <script>",
+    "subtitle": "",
+    "identify": "Hi, it's Sam from SBR",
+    "purpose": "Outstanding account & next steps",
+    "callback": "",
+    "staff_role": "You are the collector",
+    "ai_role": "",
+    "branches": [
+     {
+      "when": "Says they've paid",
+      "do": "Ask for receipt",
+      "dial": "9199"
+     },
+     {
+      "when": "Gatekeeper",
+      "do": "Leave a message"
+     },
+     "junk",
+     {
+      "dial": 9199
+     }
+    ]
+   }
+  }
+ },
+ "pack_no_tree": {
+  "roleplay": {
+   "scenarios": {},
+   "tree": {
+    "branches": "nope"
+   }
+  }
+ },
+ "lang_labels": [
+  [
+   "en",
+   "English"
+  ],
+  [
+   "en-GB",
+   "English — UK"
+  ],
+  [
+   "en-AU",
+   "English — Australia"
+  ],
+  [
+   "en-US",
+   "English — United States"
+  ],
+  [
+   "es-ES",
+   "Spanish — Spain"
+  ],
+  [
+   "es-MX",
+   "Spanish — Mexico"
+  ],
+  [
+   "pt-PT",
+   "Portuguese — Portugal"
+  ],
+  [
+   "pt-BR",
+   "Portuguese — Brazil"
+  ],
+  [
+   "fr",
+   "French"
+  ],
+  [
+   "de",
+   "German"
+  ],
+  [
+   "it",
+   "Italian"
+  ],
+  [
+   "ar-AE",
+   "Arabic — UAE"
+  ],
+  [
+   "ar-SA",
+   "Arabic — Saudi Arabia"
+  ],
+  [
+   "ar-EG",
+   "Arabic — Egypt"
+  ],
+  [
+   "zh",
+   "Chinese"
+  ],
+  [
+   "hi",
+   "Hindi"
+  ],
+  [
+   "ja",
+   "Japanese"
+  ],
+  [
+   "ko",
+   "Korean"
+  ],
+  [
+   "id",
+   "Indonesian"
+  ],
+  [
+   "tr",
+   "Turkish"
+  ],
+  [
+   "vi",
+   "Vietnamese"
+  ],
+  [
+   "ru",
+   "Russian"
+  ],
+  [
+   "bn",
+   "Bengali"
+  ],
+  [
+   "auto",
+   "Auto-detect"
+  ]
+ ],
+ "user": {
+  "name": "Angel O'Test",
+  "email": "angel+ops@example.test"
+ }
+}

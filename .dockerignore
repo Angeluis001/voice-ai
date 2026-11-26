@@ -1,0 +1,17 @@
+# Keep the Docker build context small: only Cargo files and crates/ are needed.
+.git
+.git.onedrive-placeholder
+.venv
+.planning
+.agents
+.codex
+target
+artifacts
+logs
+docs
+docker/sip-stack/runtime
+docker/sip-stack/drachtio-app/node_modules
+**/__pycache__
+.env
+.env.*
+*.pdf
